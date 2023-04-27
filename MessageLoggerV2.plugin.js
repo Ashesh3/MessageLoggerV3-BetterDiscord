@@ -3370,7 +3370,7 @@ module.exports = class MessageLoggerV2 {
         this.menu.queueInterval = setInterval(messageDataManager, this.processUserRequestQueue.queueIntervalTime);
     }
     async patchMessages() {
-        const Tooltip = ZeresPluginLibrary.WebpackModules.getByString('shouldShowTooltip', 'handleMouseEnter');
+        const Tooltip = ZeresPluginLibrary.WebpackModules.getByString('shouldShowTooltip', 'onMouseEnter');
         const dateFormat = ZeresPluginLibrary.WebpackModules.getModule(e => typeof e === 'function' && e?.toString()?.includes('sameDay'), {
             searchExports: true
         });
@@ -3596,7 +3596,7 @@ module.exports = class MessageLoggerV2 {
         this.ModalStack = ZLibrary.DiscordModules.ModalActions;
         let modalsApi = BdApi.Webpack.getModule(m => Object.values(m).some(m => m?.toString().includes("onCloseCallback") && m?.toString().includes("Layer")));
         // this._modalsApiUnsubcribe = (this.ModalStack.modalsApi || this.ModalStack.useModalsStore).subscribe(_ => {
-        this._modalsApiUnsubcribe = Object.values(modalsApi).flat().find(obj => typeof obj.subscribe === 'function')?.subscribe(_ => {
+        this._modalsApiUnsubcribe = Object.values(modalsApi).flat().find(obj => typeof obj?.subscribe === 'function')?.subscribe(_ => {
             // if (this.menu.open && !this.ModalStack.hasModalOpen(this.style.menu)) {
             // let modals = BdApi.Webpack.getModule(m => Object.values(m).some(m=>m?.toString().includes("onCloseCallback") && m?.toString().includes("Layer"))).s9.getState().default.map(x=>x.key);
             // if (modals.length == 0)
